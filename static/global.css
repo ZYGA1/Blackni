@@ -1,0 +1,183 @@
+*{
+    font-family: 'Times New Roman', Times, serif;
+    scroll-behavior: smooth;
+}
+html{
+    
+    margin: 0; padding: 0;
+
+}
+body{
+    height: 1000vh;  margin: 0; padding: 0; 
+    background-color: #3b3b3b;
+}
+#con{
+    display: flex; align-items: flex-start; justify-content: space-around; 
+    animation: sliding 2s;
+    margin-top: 300px;
+
+}
+
+h1{
+    font-size: 200%;
+    margin: 0;
+    color: white;
+}
+
+div{
+    position: relative;
+    
+    
+}
+
+#czarni{
+    height: 20%;
+    margin-top: 5px;
+}
+
+#Ostatnie p{
+    font-size: 150%;
+    color: pink;
+    position: relative;
+    margin-top: 10px;
+
+}
+
+
+p{
+    font-size: 150%;
+    color: pink;
+    margin: 0;
+    position: relative;
+}
+
+nav{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #0f0a0a;
+    height: 6%;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 100;
+    color: white;
+}
+
+#logo{
+    font-size: 200%;
+    border: 2px white solid;
+    padding: 0px 20px;
+    border-radius: 10px;
+    
+}
+
+#dodaj a{
+    text-decoration: none;
+}
+
+#dodaj a:link{
+    color: white;
+}
+
+#dodaj a:visited{
+    color: white;
+}
+
+img{
+    width: 20px;
+    height: 20px;
+    background-color: white;
+    margin-left: 5px;
+    border-radius: 20%;
+}
+
+#cont-dodaj{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    
+
+}
+
+nav div{
+    margin: 30px;
+}
+
+@keyframes sliding {
+    0% {top: -200px;}
+    
+    100% {top: 0px;}
+}
+
+
+@media (min-width: 1000px){
+    #con div h1{
+        font-size: 500%;
+    }
+    #con div p{
+        font-size: 400%;
+    }
+}
+
+@media (max-width: 1000px){
+    #con div h1{
+        font-size: 300%;
+    }
+    #con div p{
+        font-size: 200%;
+    }
+}
+
+@media (max-width: 800px){
+    #con div h1{
+        font-size: 200%;
+    }
+    #con div p{
+        font-size: 150%;
+    }
+}
+
+@media (max-width: 600px){
+    #con div h1{
+        font-size: 175%;
+    }
+    #con div p{
+        font-size: 125%;
+    }
+
+    nav div h1{
+        font-size: 100%;
+    }
+    nav div #logo{
+        font-size: 150%;
+    }
+}
+
+@media (max-width: 450px){
+    nav div h1{
+        font-size: 75%;
+    }
+    nav div #logo{
+        font-size: 100%;
+    }
+}
+
+@media (max-height: 600px){
+    nav{
+        height: 15%;
+    }
+    #con{
+        margin-top: 200px;
+    }
+
+}
+
+@media (max-height: 400px){
+    nav{
+        height: 20%;
+    }
+    #con{
+        margin-top: 100px;
+    }
+}

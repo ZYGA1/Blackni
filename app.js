@@ -25,7 +25,7 @@ connection.connect((err) => {
     }
 });
 
-const sql = 'SELECT * FROM uzytkownicy LIMIT 5';
+const sql = 'SELECT * FROM uzytkownicy ORDER BY 1 desc LIMIT 5';
 
 const a  = connection.query(sql, (err, result) => {
     if (err) {

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= result[0].imie%> | <%= name %></title>
+    <link rel="stylesheet" href="../global.css">
+</head>
+<body>
+    <nav>
+        <a href="/">
+            <div>
+                <h1 id="logo">Jebanie czarnych</h1>
+            </div>
+        </a>
+    
+        <div id="cont-dodaj">
+            <h1 id="dodaj"><a href="/dodaj">Dodaj geja</a></h1>
+            <img src="../arrow.png" alt="strzalka" >
+        </div>
+    </nav>
+    <div style="height: 2%;  margin-top: 100px; display: flex; align-items: center; justify-content: space-around; flex-flow: column;" >
+        <h1 style="font-size: 250%;"><%= result[0].imie%> <%= result[0].nazwisko%></h1>
+
+
+        <p id="gejor" style="font-size: 200%;"><%= result[0].gej == 1 ? 'Pedał' : 'Sigma' %></p>
+
+        <form action="/dodaj/:id" method="post">
+            <button id="upd" data-doc="<%= result[0].id %>" type="submit" >Zmień</button>
+            <button id="del" data-del="<% result[0].id %>" type="submit">Usuń</button>
+        </form>
+    </div>
+
+    <script>
+        gej1 = document.querySelector('#gejor').textContent
+        gej2 = 0
+
+        del = document.querySelector('#del')
+
+        del.addEventListener('click', (e) => {
+            const endpoint = `/usun/${a.dataset.del}`;
+            console.log(endpoint)
+
+            fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {gej: gej2})
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+        })
+
+        if(gej1 == 'Pedał'){
+            gej2 = 0
+        }else{
+            gej2 = 1
+        }
+
+        a = document.querySelector('#upd')
+        a.addEventListener('click', (e) => {
+            const endpoint = `/dodaj/${a.dataset.doc}`;
+            console.log(endpoint)
+
+            fetch(endpoint, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(
+                    {gej: gej2})
+            })
+            .then(res => res.json())
+            .then(data => {
+                console.log(data)
+            })
+            .catch(err => console.log(err))
+        })
+    </script>
+</body>
+</html>

@@ -2,7 +2,8 @@
 const mysql = require('mysql');
 const express = require('express');
 const e = require('express');
-app = express();
+const path = require('path');
+const app = express();
 
 
 // baza danych
@@ -40,13 +41,17 @@ app.use((req, res, next) => {
     next();
 })
 
-app.use(express.static('static'));
-app.use(express.urlencoded({extended: true}));
-
 app.set('view engine', 'ejs');
 app.set('views', 'strony');
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/public', express.static(__dirname + '/public'));
+app.use(express.urlencoded({extended: true}));
+
+
 
 app.get('/', (req, res) => {
+    let ips = req.ip;
     connection.query(sql, (err, result) => {
         if (err) {
             console.log("err");
@@ -57,7 +62,6 @@ app.get('/', (req, res) => {
             res.status(200).render('index', {result: sqlres , ips, name: 'Main'});
         }
     });
-   let ips = req.ip;  
 });
 
 app.get('/dodaj', (req, res) => {
@@ -84,10 +88,57 @@ app.post('/dodaj', (req, res) => {
     console.log(req.body);
 })
 
-app.get('/') , (req, res) => {
+
+app.post('/dodaj/:gej', (req, res) => {
+    const id = req.params.gej
+    console.log(req.body.gej)
+    sql3 = `UPDATE uzytkownicy SET gej = ? WHERE id = ?`;
+    connection.query(sql3, [req.body.gej, id], (err, result) => {
+        if (err) {
+            
+            console.log(err)
+        } else {
+            console.log(result);
+            res.redirect('/');
+        }
+    });
+
+    
+})
+
+app.post('/usun/:id', (req, res) => {
+    const id = req.params.id;
+    console.log(id);
+    sql4 = `DELETE FROM uzytkownicy WHERE id = ${id}`;
+    connection.query(sql4, (err, result) => {
+        if (err) {
+            console.log(err);
+            res.status(500).send('Server error')
+        } else {
+            console.log(result);
+            
+        }
+    });
+})
+
+app.get('/dodaj/:id', (req, res) => {
+    const id = req.params.id;
+    sql2 = `Select * FROM uzytkownicy WHERE id = ${id}`;
+    connection.query(sql2, (err, result) =>{
+        if (err) {
+            console.log(err);
+            res.status(500).send('Server error')
+        } else{
+            console.log(result);
+            res.status(200).render('detale', {result , name: 'Detale'})
+        }
+    })
+})
+
+app.get('/' , (req, res) => {
     res.status(200).render('index', {name: 'Main'});
-}
+});
 
 app.use((req, res) => {
-    res.status(404).render('404')
+    res.status(404).send('404')
 });

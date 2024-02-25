@@ -2,10 +2,13 @@
     font-family: 'Times New Roman', Times, serif;
     scroll-behavior: smooth;
 }
-html{
-    
-    margin: 0; padding: 0;
+nav a{
+    text-decoration: none;
+    color: white;
 
+}
+html{
+    margin: 0; padding: 0;
 }
 body{
     height: 1000vh;  margin: 0; padding: 0; 
@@ -14,7 +17,7 @@ body{
 #con{
     display: flex; align-items: flex-start; justify-content: space-around; 
     animation: sliding 2s;
-    margin-top: 300px;
+    margin-top: 100px;
 
 }
 
@@ -26,8 +29,6 @@ h1{
 
 div{
     position: relative;
-    
-    
 }
 
 #czarni{
@@ -40,9 +41,11 @@ div{
     color: pink;
     position: relative;
     margin-top: 10px;
-
 }
 
+#cont-form{
+    width: 50%;
+}
 
 p{
     font-size: 150%;
@@ -55,7 +58,7 @@ nav{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #0f0a0a;
+    background-color: #3f3f3f;
     height: 6%;
     position: fixed;
     width: 100%;
@@ -69,7 +72,6 @@ nav{
     border: 2px white solid;
     padding: 0px 20px;
     border-radius: 10px;
-    
 }
 
 #dodaj a{
@@ -96,8 +98,6 @@ img{
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    
-
 }
 
 nav div{
@@ -109,7 +109,6 @@ nav div{
     
     100% {top: 0px;}
 }
-
 
 @media (min-width: 1000px){
     #con div h1{

@@ -7,12 +7,13 @@ const app = express();
 
 
 // baza danych
-const connection = mysql.createConnection({
+const connection = mysql.createConnection( {
     host: 'localhost',
     user: 'root',
     password: '',
     database: 'czarni'
 });
+
 
 app.listen(80, () => {
     console.log('czarnuchy.mooo.com');
@@ -71,7 +72,7 @@ app.get('/dodaj', (req, res) => {
 app.post('/dodaj', (req, res) => {
     if(req.body.gej == 'on'){
         req.body.gej = 1;
-    } else { 
+    } else {
         req.body.gej = 0;
     }
     console.log(req.body.gej);
